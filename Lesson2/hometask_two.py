@@ -8,7 +8,7 @@ def task_one(segment):
     count = (segment - 1) // 2 + 1
     print(f"Квадраты нечетных чисел в интервале[0,{segment}]")
     for i in range(1, segment + 1, 2):
-        print(i * i, end=" ")
+        print(i*i, end=" ")
     print()
     print(f"Количество нечетных чисел в интервале[0,{segment}]")
     print(count)
@@ -32,7 +32,7 @@ def task_three(factorial):
     print("Задание №3")
     factor = 1
     for i in range(1, factorial + 1):
-        factor = factor * i
+        factor = factor*i
     return factor
 
 
