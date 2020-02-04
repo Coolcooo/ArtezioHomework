@@ -1,0 +1,1 @@
+def a(x):return min(map(float,x.split()),key=abs)
