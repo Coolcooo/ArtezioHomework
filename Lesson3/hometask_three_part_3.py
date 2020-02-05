@@ -6,6 +6,7 @@ def fun1():
     max_element = None
     def fun2(first, second, third, fourth):
         nonlocal max_element
+        
         if max_element is None:
             max_element = max(first, second, third, fourth)
         max_element = max(max_element, first, second, third, fourth)
