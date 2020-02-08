@@ -1,4 +1,4 @@
-"""Модуль предназначен для тестирования функции разбиения xml документа."""
+"""Модуль предназначен для тестирования функции разбиения xml документа"""
 import xml.etree.cElementTree as eT
 
 
@@ -10,7 +10,7 @@ def xml_to_dict_and_max_depth(xml_string):
     dict_tree = {"name": root.tag, "children": list(root)}
     depth = 0
 
-    def fun2(parent):
+    def add_children(parent):
         nonlocal depth
         uniqueness_check = True
         for i, children in enumerate(parent["children"]):
@@ -19,10 +19,10 @@ def xml_to_dict_and_max_depth(xml_string):
                 uniqueness_check = False
             parent["children"][i] = {"name": children.tag,
                                      "children": list(children)}
-            fun2(parent["children"][i])
-    fun2(dict_tree)
+            add_children(parent["children"][i])
+    add_children(dict_tree)
 
-    return dict_tree, int(depth)
+    return dict_tree, depth
 
 
 CHECK_XML_STRING = "<root><element1 /><element2 /><element8 />" \
@@ -33,4 +33,3 @@ print(xml_to_dict_and_max_depth(CHECK_XML_STRING))
 CHECK_XML_STRING = "<root><element1 /><element2 />" \
                    "<element3><element4 /></element3></root>"
 print(xml_to_dict_and_max_depth(CHECK_XML_STRING))
-
