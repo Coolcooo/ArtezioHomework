@@ -20,6 +20,7 @@ def xml_to_dict_and_max_depth(xml_string):
             parent["children"][i] = {"name": children.tag,
                                      "children": list(children)}
             add_children(parent["children"][i])
+
     add_children(dict_tree)
 
     return dict_tree, depth
