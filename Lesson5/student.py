@@ -70,20 +70,18 @@ VLADIMIR.make_lab(1)
 VLADIMIR.make_lab(1)
 VLADIMIR.make_lab(1)
 VLADIMIR.make_lab(1)
-
 VLADIMIR.make_lab(1)
 VLADIMIR.make_lab(1)
 VLADIMIR.make_lab(8)
-
 VLADIMIR.make_lab(20, 5)
 VLADIMIR.make_lab(8, 5)
 VLADIMIR.make_lab(8, 5)
 VLADIMIR.make_lab(8, 5)
 VLADIMIR.make_lab(8, 5)
-
 VLADIMIR.make_lab(7, 20)
 VLADIMIR.make_lab(7, 20)
 VLADIMIR.make_lab(7, 20)
 VLADIMIR.make_exam(25)
+VLADIMIR.make_exam(35)
 
 print(VLADIMIR)
