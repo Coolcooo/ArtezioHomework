@@ -18,6 +18,8 @@ class Student(object):
         """Функция проставляет баллы за лабораторные работы."""
         if number_of_points > self._info["lab_max"]:
             number_of_points = self._info["lab_max"]
+        if number_of_points < 0:
+            return self
         if len(self._uncompleted_lab) == 0:
             lab_number = int(input("Введите номер лабораторной работы: "))
         if lab_number is None:
@@ -43,6 +45,8 @@ class Student(object):
             return self
         if exam_grade > self._info["exam_max"]:
             exam_grade = self._info["exam_max"]
+        if exam_grade < 0:
+            return self
         self.points["exam"] = exam_grade
         self.attempt["exam"] = True
         return self
