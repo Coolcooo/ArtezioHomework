@@ -16,10 +16,7 @@ class Observable(object):
             raise AttributeError
 
     def __dir__(self):
-        attr_list = []
-        for i in self._s:
-            attr_list.append(i)
-        return attr_list
+        return self._s.keys()
 
     def __str__(self):
         k = f"{self.__class__.__name__}("
