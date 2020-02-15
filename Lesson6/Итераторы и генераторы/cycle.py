@@ -3,7 +3,7 @@
 
 def cycle(iterable):
     """функция-генератор cycle которая возвращает циклический итератор."""
-    while True:
+    while iterable:
         for i in iterable:
             yield i
 
