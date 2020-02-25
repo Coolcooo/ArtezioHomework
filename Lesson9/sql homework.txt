@@ -1,0 +1,62 @@
+1.
+
+CREATE DATABASE IF NOT EXISTS job;
+USE job;
+CREATE TABLE IF NOT EXISTS posts (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+post VARCHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS employes (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+post_id INT unsigned NOT NULL,
+salary DOUBLE NOT NULL,
+FOREIGN KEY (post_id) REFERENCES posts(id)
+);
+
+INSERT INTO posts (post) VALUES ('Cleaner');
+INSERT INTO posts (post) VALUES ('Designer');
+INSERT INTO posts (post) VALUES ('Developer');
+INSERT INTO employes (first_name, last_name, post_id, salary) VALUES ('Roman','Pupkin',2,100000);
+INSERT INTO employes (first_name, last_name, post_id, salary) VALUES ('Ivan','Ivanov',1,10000);
+INSERT INTO employes (first_name, last_name, post_id, salary) VALUES ('Artem','Pavlov',2,25000);
+INSERT INTO employes (first_name, last_name, post_id, salary) VALUES ('Pavel','Drug',3,40000);
+INSERT INTO employes (first_name, last_name, post_id, salary) VALUES ('Sergei', 'Fominok', 1, 10000);
+
+
+2.
+a) 
+
+SELECT employe.id, employe.first_name, employe.last_name, post.post, employe.salary
+FROM employes employe 
+INNER JOIN posts post ON employe.post_id = post.id 
+WHERE employe.salary < 30000;
+
+b) 
+
+SELECT employe.id, employe.first_name, employe.last_name, post.post, employe.salary
+FROM employes employe 
+INNER JOIN posts post ON employe.post_id = post.id 
+WHERE employe.salary < 30000 AND post.post = 'Designer';
+
+
+3. 
+CREATE TABLE IF NOT EXISTS subordinates (
+head_id INT UNSIGNED,
+subordinate_id INT UNSIGNED,
+FOREIGN KEY (head_id) REFERENCES employes (id),
+FOREIGN KEY (subordinate_id) REFERENCES employes (id),
+UNIQUE(head_id,subordinate_id)
+);
+INSERT INTO subordinates VALUES (1, 2);
+INSERT INTO subordinates VALUES (1, 5);
+INSERT INTO subordinates VALUES (1, 3);
+INSERT INTO subordinates VALUES (3, 2);
+INSERT INTO subordinates VALUES (3, 5);
+
+SELECT employe.id, employe.first_name, employe.last_name, post.post, employe.salary
+ FROM subordinates subordinate
+ INNER JOIN employes employe ON employe.id = subordinate.subordinate_id
+ INNER JOIN posts post ON employe.post_id = post.id
+ WHERE subordinate.head_id = 1;
